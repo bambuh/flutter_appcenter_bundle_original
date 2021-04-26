@@ -15,7 +15,6 @@ A new flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'AppCenter', '~> 3.3.4'
-  s.dependency 'AppCenter/Distribute', '~> 3.3.4'
   s.dependency 'Flutter'
   s.platform = :ios, '8.0'
   s.static_framework = true

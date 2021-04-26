@@ -4,7 +4,6 @@ import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
-import AppCenterDistribute
 
 public class SwiftFlutterAppcenterBundlePlugin: NSObject, FlutterPlugin {
     static let methodChannelName = "com.github.hanabi1224.flutter_appcenter_bundle";
@@ -30,34 +29,17 @@ public class SwiftFlutterAppcenterBundlePlugin: NSObject, FlutterPlugin {
             }
 
             let secret = args["secret"] as! String
-            let usePrivateTrack = args["usePrivateTrack"] as! Bool
-            if (usePrivateTrack) {
-                MSDistribute.updateTrack = .private
-            }
 
             MSAppCenter.start(secret, withServices:[
                 MSAnalytics.self,
                 MSCrashes.self,
-                MSDistribute.self,
             ])
         case "trackEvent":
             trackEvent(call: call, result: result)
             return
-        case "isDistributeEnabled":
-            result(MSDistribute.isEnabled())
-            return
         case "getInstallId":
             result(MSAppCenter.installId().uuidString)
             return
-        case "configureDistribute":
-            MSDistribute.setEnabled(call.arguments as! Bool)
-        case "configureDistributeDebug":
-            result(nil)
-            return
-        case "disableAutomaticCheckForUpdate":
-            MSDistribute.disableAutomaticCheckForUpdate()
-        case "checkForUpdate":
-            MSDistribute.checkForUpdate()
         case "isCrashesEnabled":
             result(MSCrashes.isEnabled())
             return

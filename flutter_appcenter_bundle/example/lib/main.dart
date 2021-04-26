@@ -8,9 +8,7 @@ void main() async {
   await AppCenter.startAsync(
     appSecretAndroid: '49361c2e-b788-4bc2-a33d-838b04b3e06b',
     appSecretIOS: '2da3d93f-6b3f-48f9-920f-2d63ae3cd25a',
-    enableDistribute: false,
   );
-  await AppCenter.configureDistributeDebugAsync(enabled: false);
 
   runApp(MyApp());
 }
@@ -68,18 +66,6 @@ class _MyAppState extends State<MyApp> {
                 },
               ),
               const SizedBox(height: 8.0),
-              FutureBuilder(
-                future: AppCenter.isDistributeEnabledAsync(),
-                builder: (_, AsyncSnapshot<bool?> snapshot) {
-                  if (snapshot.hasData) {
-                    final isDistributeEnabled = snapshot.data!;
-
-                    return Text('IsDistributeEnabled: $isDistributeEnabled');
-                  }
-
-                  return const CircularProgressIndicator.adaptive();
-                },
-              ),
             ],
           ),
         ),

@@ -32,23 +32,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    flavorDimensions "dummy", "distribute"
-    productFlavors {
-        dummyFoo {
-            dimension "dummy"
-        }
-        dummyBar {
-            dimension "dummy"
-        }
-        appCenter {
-            dimension "distribute"
-        }
-
-        googlePlay {
-            dimension "distribute"
-        }
-    }
-
     lintOptions {
         disable 'InvalidPackage'
         checkReleaseBuilds false

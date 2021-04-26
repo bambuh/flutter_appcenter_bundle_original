@@ -39,16 +39,6 @@ android {
         disable 'InvalidPackage'
         checkReleaseBuilds false
     }
-    flavorDimensions "distribute"
-    productFlavors {
-        appCenter {
-            dimension "distribute"
-        }
-        googlePlay {
-            isDefault true
-            dimension "distribute"
-        }
-    }
 }
 
 dependencies {
@@ -57,8 +47,6 @@ dependencies {
     def appCenterSdkVersion = '3.3.1'
     implementation "com.microsoft.appcenter:appcenter-analytics:$appCenterSdkVersion"
     implementation "com.microsoft.appcenter:appcenter-crashes:$appCenterSdkVersion"
-    appCenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
-    googlePlayImplementation "com.microsoft.appcenter:appcenter-distribute-play:${appCenterSdkVersion}"
 
     if (System.env.FLUTTER_ROOT != null) {
         println "FLUTTER_ROOT: $System.env.FLUTTER_ROOT"
